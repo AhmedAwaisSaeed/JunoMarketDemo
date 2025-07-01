@@ -103,17 +103,20 @@ To learn more about React Native, take a look at the following resources:
 src/
   features/
     auth/
-      screens/      # Screens related to authentication (e.g., LoginScreen.tsx)
-      styles/       # Style files for auth screens (e.g., loginScreen.styles.ts)
-      types/        # TypeScript types/interfaces for auth (e.g., auth.types.ts)
+      components/    # Reusable components specific to auth feature
+      screens/       # Screens related to authentication (e.g., LoginScreen.tsx)
+      styles/        # Style files for auth screens (e.g., loginScreen.styles.ts)
+      types/         # TypeScript types/interfaces for auth (e.g., auth.types.ts)
     home/
-      screens/      # Screens related to home feature
-      styles/       # Style files for home screens
-      types/        # TypeScript types/interfaces for home
+      components/    # Reusable components specific to home feature
+      screens/       # Screens related to home feature
+      styles/        # Style files for home screens
+      types/         # TypeScript types/interfaces for home
     detail/
-      screens/      # Screens related to detail feature
-      styles/       # Style files for detail screens
-      types/        # TypeScript types/interfaces for detail
+      components/    # Reusable components specific to detail feature
+      screens/       # Screens related to detail feature
+      styles/        # Style files for detail screens
+      types/         # TypeScript types/interfaces for detail
   shared/
     components/     # Reusable UI components (Button, Spinner, CustomHeader, etc.)
     constants/      # Shared constants (layout, platform, etc.)
@@ -129,7 +132,7 @@ src/
 App.tsx             # Entry point (can be moved here)
 ```
 
-- Each feature (auth, home, detail) is self-contained with its own screens, styles, and types.
+- Each feature (auth, home, detail) is self-contained with its own components, screens, styles, and types.
 - Shared logic and reusable components are organized under `shared/`.
 - App-wide logic (api, config, store, types) is under `core/`.
 - Navigation setup is in `navigation/`.
