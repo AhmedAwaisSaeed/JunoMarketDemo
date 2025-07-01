@@ -97,39 +97,39 @@ To learn more about React Native, take a look at the following resources:
 - [`@facebook/react-native`](https://github.com/facebook/react-native) - the Open Source; GitHub **repository** for React Native.
 # JunoMarketDemo
 
-## Project Structure (MVVM, Feature-Based)
+## Project Structure (Current)
 
 ```
 src/
   features/
-    Auth/
-      components/   # UI components for Auth feature
-      screens/      # Screens for Auth feature
-      types/        # TypeScript types/interfaces for Auth
-      styles/       # Style files for Auth feature
-      viewmodels/   # ViewModel logic for Auth feature
-      models/       # Data models for Auth feature
-    Home/
-      components/
-      screens/
-      types/
-      styles/
-      viewmodels/
-      models/
-    Detail/
-      components/
-      screens/
-      types/
-      styles/
-      viewmodels/
-      models/
-  navigation/       # App navigation setup
-  store/            # Redux store and slices
-  api/              # API logic (Axios/fetch)
-  utils/            # Utility functions
-  theme/            # App-wide styles/themes
+    auth/
+      screens/      # Screens related to authentication (e.g., LoginScreen.tsx)
+      styles/       # Style files for auth screens (e.g., loginScreen.styles.ts)
+      types/        # TypeScript types/interfaces for auth (e.g., auth.types.ts)
+    home/
+      screens/      # Screens related to home feature
+      styles/       # Style files for home screens
+      types/        # TypeScript types/interfaces for home
+    detail/
+      screens/      # Screens related to detail feature
+      styles/       # Style files for detail screens
+      types/        # TypeScript types/interfaces for detail
+  shared/
+    components/     # Reusable UI components (Button, Spinner, CustomHeader, etc.)
+    constants/      # Shared constants (layout, platform, etc.)
+    hooks/          # Reusable custom hooks
+    utils/          # Utility functions
+    styles/         # Shared/global style files
+  core/
+    api/            # API logic (Axios/fetch)
+    config/         # App configuration
+    store/          # Redux store and slices
+    types/          # Global TypeScript types
+  navigation/       # App navigation setup (e.g., AppNavigator.tsx)
 App.tsx             # Entry point (can be moved here)
 ```
 
-- Each feature (Auth, Home, Detail) is self-contained with its own components, screens, types, styles, viewmodels, and models.
-- Shared logic (navigation, store, api, utils, theme) is outside features.
+- Each feature (auth, home, detail) is self-contained with its own screens, styles, and types.
+- Shared logic and reusable components are organized under `shared/`.
+- App-wide logic (api, config, store, types) is under `core/`.
+- Navigation setup is in `navigation/`.
