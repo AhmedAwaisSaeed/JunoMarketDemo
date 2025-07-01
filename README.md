@@ -66,7 +66,7 @@ This is one way to run your app — you can also build it directly from Android 
 
 Now that you have successfully run the app, let's make changes!
 
-Open `App.tsx` in your text editor of choice and make some changes. When you save, your app will automatically update and reflect these changes — this is powered by [Fast Refresh](https://reactnative.dev/docs/fast-refresh).
+Open `App.tsx` in your text editor of choice and make some changes. When you save, your app will automatically update and reflect these changes — this is powered by [Fast Refresh](https://reactnative.dev/docs/fast-refresh).
 
 When you want to forcefully reload, for example to reset the state of your app, you can perform a full reload:
 
@@ -96,3 +96,40 @@ To learn more about React Native, take a look at the following resources:
 - [Blog](https://reactnative.dev/blog) - read the latest official React Native **Blog** posts.
 - [`@facebook/react-native`](https://github.com/facebook/react-native) - the Open Source; GitHub **repository** for React Native.
 # JunoMarketDemo
+
+## Project Structure (MVVM, Feature-Based)
+
+```
+src/
+  features/
+    Auth/
+      components/   # UI components for Auth feature
+      screens/      # Screens for Auth feature
+      types/        # TypeScript types/interfaces for Auth
+      styles/       # Style files for Auth feature
+      viewmodels/   # ViewModel logic for Auth feature
+      models/       # Data models for Auth feature
+    Home/
+      components/
+      screens/
+      types/
+      styles/
+      viewmodels/
+      models/
+    Detail/
+      components/
+      screens/
+      types/
+      styles/
+      viewmodels/
+      models/
+  navigation/       # App navigation setup
+  store/            # Redux store and slices
+  api/              # API logic (Axios/fetch)
+  utils/            # Utility functions
+  theme/            # App-wide styles/themes
+App.tsx             # Entry point (can be moved here)
+```
+
+- Each feature (Auth, Home, Detail) is self-contained with its own components, screens, types, styles, viewmodels, and models.
+- Shared logic (navigation, store, api, utils, theme) is outside features.
