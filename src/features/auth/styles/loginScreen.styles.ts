@@ -1,15 +1,20 @@
 import { StyleSheet } from 'react-native';
+import { colors, spacing, typography } from '../../../shared/styles/common';
 
 export const styles = StyleSheet.create({
   container: {
     flex: 1,
-    alignItems: 'center',
     justifyContent: 'center',
-    backgroundColor: '#fff',
+    backgroundColor: colors.background,
   },
   text: {
-    fontSize: 24,
-    fontWeight: 'bold',
-    color: '#333',
+    ...typography.title,
+    color: colors.text,
+    textAlign: 'center',
+    marginBottom: spacing.lg,
+  },
+  buttonContainer: {
+    width: '100%',
+    marginTop: spacing.md,
   },
 }); 

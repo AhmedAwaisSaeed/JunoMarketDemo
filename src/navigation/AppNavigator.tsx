@@ -14,7 +14,7 @@ const AuthStack = createNativeStackNavigator<AuthStackParamList>();
 
 function AuthStackNavigator() {
   return (
-    <AuthStack.Navigator>
+    <AuthStack.Navigator screenOptions={{ headerShown: false }}>
       <AuthStack.Screen name="Login" component={LoginScreen} />
     </AuthStack.Navigator>
   );
@@ -30,7 +30,7 @@ const HomeStack = createNativeStackNavigator<HomeStackParamList>();
 
 function HomeStackNavigator() {
   return (
-    <HomeStack.Navigator>
+    <HomeStack.Navigator screenOptions={{ headerShown: false }}>
       <HomeStack.Screen name="Home" component={HomeScreen} />
       {/* Detail screen will be in DetailStack */}
     </HomeStack.Navigator>
@@ -46,7 +46,7 @@ const DetailStack = createNativeStackNavigator<DetailStackParamList>();
 
 function DetailStackNavigator() {
   return (
-    <DetailStack.Navigator>
+    <DetailStack.Navigator screenOptions={{ headerShown: false }}>
       <DetailStack.Screen name="Detail" component={DetailScreen} />
     </DetailStack.Navigator>
   );
