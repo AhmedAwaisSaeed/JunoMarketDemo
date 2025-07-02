@@ -80,6 +80,7 @@ const Button: React.FC<ButtonProps> = ({
     >
       {loading ? (
         <ActivityIndicator
+          testID="ActivityIndicator"
           color={variant === 'outline' ? colors.primary : extendedColors.white}
           size="small"
         />
