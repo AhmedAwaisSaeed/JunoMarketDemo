@@ -7,14 +7,14 @@ import {
   TouchableWithoutFeedback,
   Keyboard,
 } from 'react-native';
-import { styles } from '../styles/loginScreen.styles';
-import { LoginScreenProps } from '../types/loginScreen.types';
-import CommonTextInput from '../../../shared/components/CommonTextInput';
-import { commonStyles } from '../../../shared/styles/common';
-import Button from '../../../shared/components/Button';
-import { DEMO_USERNAME, DEMO_PASSWORD } from '../../../shared/constants/auth';
-import { useAppDispatch } from '../../../core/store/hooks';
-import { login } from '../../../core/store/slices/authSlice';
+import { styles } from './loginScreen.styles';
+import { LoginScreenProps } from './loginScreen.types';
+import CommonTextInput from '../../../../shared/components/CommonTextInput';
+import { commonStyles } from '../../../../shared/styles/common';
+import Button from '../../../../shared/components/Button';
+import { DEMO_USERNAME, DEMO_PASSWORD } from '../../../../shared/constants/auth';
+import { useAppDispatch } from '../../../../core/store/hooks';
+import { login } from '../../../../core/store/slices/authSlice';
 
 const LoginScreen: React.FC<LoginScreenProps> = () => {
   const [username, setUsername] = useState('');

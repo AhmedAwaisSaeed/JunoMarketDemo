@@ -1,9 +1,9 @@
 import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator, NativeStackScreenProps } from '@react-navigation/native-stack';
-import LoginScreen from '../features/auth/screens/LoginScreen';
-import HomeScreen from '../features/home/screens/HomeScreen';
-import DetailScreen from '../features/detail/screens/DetailScreen';
+import LoginScreen from '../features/auth/screens/login/LoginScreen';
+import HomeScreen from '../features/home/screens/home/HomeScreen';
+import DetailScreen from '../features/detail/screens/detail/DetailScreen';
 import { useAppSelector } from '../core/store/hooks';
 
 // --- Auth Stack Types and Placeholder Screens ---
