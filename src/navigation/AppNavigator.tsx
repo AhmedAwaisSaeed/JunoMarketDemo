@@ -4,6 +4,7 @@ import { createNativeStackNavigator, NativeStackScreenProps } from '@react-navig
 import LoginScreen from '../features/auth/screens/LoginScreen';
 import HomeScreen from '../features/home/screens/HomeScreen';
 import DetailScreen from '../features/detail/screens/DetailScreen';
+import { useAppSelector } from '../core/store/hooks';
 
 // --- Auth Stack Types and Placeholder Screens ---
 export type AuthStackParamList = {
@@ -62,8 +63,7 @@ export type RootStackParamList = {
 const RootStack = createNativeStackNavigator<RootStackParamList>();
 
 export default function AppNavigator() {
-  // TODO: Replace with real auth state
-  const isLoggedIn = false;
+  const isLoggedIn = useAppSelector(state => state.auth.isLoggedIn);
 
   return (
     <NavigationContainer>

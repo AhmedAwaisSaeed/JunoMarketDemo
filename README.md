@@ -136,3 +136,8 @@ App.tsx             # Entry point (can be moved here)
 - Shared logic and reusable components are organized under `shared/`.
 - App-wide logic (api, config, store, types) is under `core/`.
 - Navigation setup is in `navigation/`.
+
+## Demo Credentials
+
+- **Username:** junomarket
+- **Password:** 12345678

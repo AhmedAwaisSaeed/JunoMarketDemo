@@ -12,15 +12,23 @@ import { LoginScreenProps } from '../types/loginScreen.types';
 import CommonTextInput from '../../../shared/components/CommonTextInput';
 import { commonStyles } from '../../../shared/styles/common';
 import Button from '../../../shared/components/Button';
+import { DEMO_USERNAME, DEMO_PASSWORD } from '../../../shared/constants/auth';
+import { useAppDispatch } from '../../../core/store/hooks';
+import { login } from '../../../core/store/slices/authSlice';
 
 const LoginScreen: React.FC<LoginScreenProps> = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
+  const [error, setError] = useState('');
+  const dispatch = useAppDispatch();
 
   const handleLogin = () => {
-    // Dummy login handler
-    console.log('Username:', username);
-    console.log('Password:', password);
+    if (username !== DEMO_USERNAME || password !== DEMO_PASSWORD) {
+      setError('Invalid username or password.');
+      return;
+    }
+    setError('');
+    dispatch(login());
   };
 
   return (
@@ -48,6 +56,7 @@ const LoginScreen: React.FC<LoginScreenProps> = () => {
             secureTextEntry
             returnKeyType="done"
           />
+          {error ? <Text style={commonStyles.errorText}>{error}</Text> : null}
           <View style={styles.buttonContainer}>
             <Button title="Login" onPress={handleLogin} fullWidth />
           </View>
