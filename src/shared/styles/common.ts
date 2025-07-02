@@ -71,4 +71,7 @@ export const commonStyles = StyleSheet.create({
     marginHorizontal: spacing.md,
     marginVertical: spacing.sm,
   },
+  screenHorizontalPadding: {
+    paddingHorizontal: 20,
+  },
 });

@@ -104,19 +104,25 @@ src/
   features/
     auth/
       components/    # Reusable components specific to auth feature
-      screens/       # Screens related to authentication (e.g., LoginScreen.tsx)
-      styles/        # Style files for auth screens (e.g., loginScreen.styles.ts)
-      types/         # TypeScript types/interfaces for auth (e.g., auth.types.ts)
+      screens/
+        login/
+          LoginScreen.tsx
+          loginScreen.styles.ts
+          loginScreen.types.ts
     home/
       components/    # Reusable components specific to home feature
-      screens/       # Screens related to home feature
-      styles/        # Style files for home screens
-      types/         # TypeScript types/interfaces for home
+      screens/
+        home/
+          HomeScreen.tsx
+          homeScreen.styles.ts
+          homeScreen.types.ts
     detail/
       components/    # Reusable components specific to detail feature
-      screens/       # Screens related to detail feature
-      styles/        # Style files for detail screens
-      types/         # TypeScript types/interfaces for detail
+      screens/
+        detail/
+          DetailScreen.tsx
+          detailScreen.styles.ts
+          detailScreen.types.ts
   shared/
     components/     # Reusable UI components (Button, Spinner, CustomHeader, etc.)
     constants/      # Shared constants (layout, platform, etc.)
@@ -126,13 +132,22 @@ src/
   core/
     api/            # API logic (Axios/fetch)
     config/         # App configuration
-    store/          # Redux store and slices
+    store/
+      slices/       # Redux Toolkit slices (e.g., authSlice)
+      hooks.ts      # Typed Redux hooks
+      store.ts      # Redux store setup
     types/          # Global TypeScript types
   navigation/       # App navigation setup (e.g., AppNavigator.tsx)
-App.tsx             # Entry point (can be moved here)
+App.tsx             # Entry point
 ```
 
-- Each feature (auth, home, detail) is self-contained with its own components, screens, styles, and types.
+- Each screen (e.g., Login, Home, Detail) is in its own folder inside the relevant feature's screens directory, with colocated styles and types files.
+- Each feature can have its own components folder for feature-specific reusable components.
 - Shared logic and reusable components are organized under `shared/`.
 - App-wide logic (api, config, store, types) is under `core/`.
 - Navigation setup is in `navigation/`.
+
+## Demo Credentials
+
+- **Username:** junomarket
+- **Password:** 12345678

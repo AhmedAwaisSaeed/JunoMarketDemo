@@ -1,7 +1,7 @@
 import React from 'react';
 import { View, Text } from 'react-native';
-import { styles } from '../styles/detailScreen.styles';
-import { DetailScreenProps } from '../types/detailScreen.types';
+import { styles } from './detailScreen.styles';
+import { DetailScreenProps } from './detailScreen.types';
 
 const DetailScreen: React.FC<DetailScreenProps> = () => {
   return (
