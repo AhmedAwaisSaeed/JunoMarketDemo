@@ -2,11 +2,10 @@ import React, { useState } from 'react';
 import {
   View,
   Text,
-  KeyboardAvoidingView,
-  Platform,
   TouchableWithoutFeedback,
   Keyboard,
 } from 'react-native';
+import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 import { styles } from './loginScreen.styles';
 import { LoginScreenProps } from './loginScreen.types';
 import CommonTextInput from '../../../../shared/components/CommonTextInput';
@@ -32,12 +31,16 @@ const LoginScreen: React.FC<LoginScreenProps> = () => {
   };
 
   return (
-    <KeyboardAvoidingView
-      style={styles.container}
-      behavior={Platform.OS === 'ios' ? 'padding' : undefined}
+    <KeyboardAwareScrollView
+      style={styles.scrollContainer}
+      contentContainerStyle={styles.contentContainer}
+      enableOnAndroid
+      extraScrollHeight={24}
+      keyboardShouldPersistTaps="handled"
+      showsVerticalScrollIndicator={false}
     >
       <TouchableWithoutFeedback onPress={Keyboard.dismiss} accessible={false}>
-        <View style={[styles.container, commonStyles.screenHorizontalPadding]}>
+        <View style={commonStyles.screenHorizontalPadding}>
           <Text style={styles.text}>Login</Text>
           <CommonTextInput
             label="Username"
@@ -62,7 +65,7 @@ const LoginScreen: React.FC<LoginScreenProps> = () => {
           </View>
         </View>
       </TouchableWithoutFeedback>
-    </KeyboardAvoidingView>
+    </KeyboardAwareScrollView>
   );
 };
 

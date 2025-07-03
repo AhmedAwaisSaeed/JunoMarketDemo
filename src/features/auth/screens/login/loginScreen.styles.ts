@@ -17,4 +17,12 @@ export const styles = StyleSheet.create({
     width: '100%',
     marginTop: spacing.md,
   },
+  scrollContainer: {
+    flex: 1,
+    backgroundColor: colors.background,
+  },
+  contentContainer: {
+    flexGrow: 1,
+    justifyContent: 'center',
+  },
 }); 

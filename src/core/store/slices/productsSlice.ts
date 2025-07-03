@@ -25,7 +25,7 @@ const initialState: ProductsState = {
   total: 0,
   skip: 0,
   limit: 30,
-  loading: false,
+  loading: true,
   refreshing: false,
   loadingMore: false,
   error: null,
