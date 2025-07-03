@@ -1,4 +1,3 @@
-
 import React, { useEffect, useState } from 'react';
 import AppNavigator from './src/navigation/AppNavigator';
 import { Provider } from 'react-redux';
@@ -7,6 +6,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import { useAppDispatch, useAppSelector } from './src/core/store/hooks';
 import { setIsLoggedIn } from './src/core/store/slices/authSlice';
 import { ActivityIndicator, View } from 'react-native';
+import { commonStyles } from './src/shared/styles/common';
 
 function AppWithPersistence() {
   const dispatch = useAppDispatch();
@@ -37,7 +37,7 @@ function AppWithPersistence() {
 
   if (loading) {
     return (
-      <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+      <View style={commonStyles.centered}>
         <ActivityIndicator size="large" />
       </View>
     );
