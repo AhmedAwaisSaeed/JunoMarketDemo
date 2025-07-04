@@ -39,7 +39,13 @@ const CustomHeader = ({ title, showBack }: CustomHeaderProps) => {
             )}
           </TouchableOpacity>
         )}
-        <Text style={[styles.title, showBack && styles.titleWithBack]}>{title}</Text>
+        <Text
+          style={[styles.title, showBack && styles.titleWithBack]}
+          numberOfLines={1}
+          ellipsizeMode="tail"
+        >
+          {title}
+        </Text>
         {showBack && <View style={styles.backButtonPlaceholder} />}
       </View>
     </View>

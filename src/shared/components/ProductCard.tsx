@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, Image, StyleSheet } from 'react-native';
+import { View, Text, Image, StyleSheet, TouchableOpacity, Platform } from 'react-native';
 import { colors } from '../styles/common';
 import { IS_IOS } from '../constants/platform';
 
@@ -8,16 +8,21 @@ interface ProductCardProps {
   title: string;
   description: string;
   price: number;
+  onPress?: () => void;
 }
 
-const ProductCard: React.FC<ProductCardProps> = ({ image, title, description, price }) => (
-  <View style={styles.card}>
-    <Image source={{ uri: image }} resizeMode="contain" style={styles.image} />
-    <View style={styles.cardContent}>
-      <Text style={styles.title}>{title}</Text>
-      <Text style={styles.price}>${price}</Text>
-      <Text style={styles.description}>{description}</Text>
-    </View>
+const ProductCard: React.FC<ProductCardProps> = ({ image, title, description, price, onPress }) => (
+  <View style={[styles.card, { overflow: IS_IOS ? 'visible' : 'hidden' }] }>
+    <TouchableOpacity onPress={onPress} activeOpacity={0.8} style={{ flex: 1 }}>
+      <View style={styles.innerContent}>
+        <Image source={{ uri: image }} resizeMode="contain" style={styles.image} />
+        <View style={styles.cardContent}>
+          <Text style={styles.title}>{title}</Text>
+          <Text style={styles.price}>${price}</Text>
+          <Text style={styles.description}>{description}</Text>
+        </View>
+      </View>
+    </TouchableOpacity>
   </View>
 );
 
@@ -26,14 +31,16 @@ const styles = StyleSheet.create({
     backgroundColor: colors.background,
     borderRadius: 12,
     marginBottom: 16,
-    overflow: IS_IOS ? 'visible' : 'hidden',
-    // Improved shadow for iOS
+    // overflow set dynamically
     shadowColor: '#000',
     shadowOffset: { width: 0, height: 4 },
     shadowOpacity: 0.18,
     shadowRadius: 8,
     elevation: 4, // Android
+  },
+  innerContent: {
     flexDirection: 'row',
+    flex: 1,
   },
   image: {
     width: 100,
