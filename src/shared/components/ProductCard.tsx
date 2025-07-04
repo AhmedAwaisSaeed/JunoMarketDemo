@@ -2,7 +2,7 @@ import React from 'react';
 import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
 import { colors } from '../styles/common';
 import { IS_IOS } from '../constants/platform';
-import { AppImage } from './index';
+import { AppImage } from '../components';
 
 interface ProductCardProps {
   image: string;
