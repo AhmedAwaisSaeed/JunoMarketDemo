@@ -7,6 +7,7 @@ import CustomHeader from '../../../../shared/components/CustomHeader';
 import Spinner from '../../../../shared/components/Spinner';
 import { useProducts } from './useProducts';
 import { commonStyles } from '../../../../shared/styles/common';
+import { useNavigation } from '@react-navigation/native';
 
 interface Product {
   id: number;
@@ -17,6 +18,7 @@ interface Product {
 }
 
 const HomeScreen: React.FC<HomeScreenProps> = () => {
+  const navigation = useNavigation();
   const {
     products,
     loading,
@@ -28,15 +30,21 @@ const HomeScreen: React.FC<HomeScreenProps> = () => {
   } = useProducts();
 
   const renderItem = useCallback(
-    ({ item }: { item: Product }) => (
-      <ProductCard
-        image={item.thumbnail}
-        title={item.title}
-        description={item.description}
-        price={item.price}
-      />
-    ),
-    []
+    ({ item }: { item: Product }) => {
+      const handlePress = () => {
+        navigation.navigate('Detail', { id: item.id });
+      };
+      return (
+        <ProductCard
+          image={item.thumbnail}
+          title={item.title}
+          description={item.description}
+          price={item.price}
+          onPress={handlePress}
+        />
+      );
+    },
+    [navigation]
   );
 
   if (loading) {

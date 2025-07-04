@@ -10,4 +10,9 @@ export const fetchProducts = async (skip = 0, limit = 30) => {
     skip: response.data.skip,
     limit: response.data.limit,
   };
+};
+
+export const fetchProductById = async (id: number) => {
+  const response = await axiosInstance.get(`/products/${id}`);
+  return response.data;
 }; 
