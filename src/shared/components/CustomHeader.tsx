@@ -32,11 +32,7 @@ const CustomHeader = ({ title, showBack }: CustomHeaderProps) => {
             style={styles.backButton}
             hitSlop={{ top: 10, bottom: 10, left: 10, right: 10 }}
           >
-            {IS_IOS ? (
-              <Text style={styles.backText}>Back</Text>
-            ) : (
-              <Text style={styles.backIcon}>‹</Text>
-            )}
+            <Text style={styles.backIcon}>‹</Text>
           </TouchableOpacity>
         )}
         <Text

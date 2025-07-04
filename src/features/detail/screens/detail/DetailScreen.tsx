@@ -1,11 +1,12 @@
 import React, { useEffect } from 'react';
-import { View, Text, Image, ScrollView } from 'react-native';
+import { View, Text, ScrollView } from 'react-native';
 import { styles } from './detailScreen.styles';
 import { DetailScreenProps } from './detailScreen.types';
 import { useAppDispatch, useAppSelector } from '../../../../core/store/hooks';
 import { fetchProductDetailsThunk, resetProductDetails } from '../../../../core/store/slices/productDetailsSlice';
 import Spinner from '../../../../shared/components/Spinner';
 import CustomHeader from '../../../../shared/components/CustomHeader';
+import { AppImage } from '../../../../shared/components';
 import { commonStyles } from '../../../../shared/styles/common';
 
 const DetailScreen: React.FC<DetailScreenProps> = ({ route }) => {
@@ -55,7 +56,7 @@ const DetailScreen: React.FC<DetailScreenProps> = ({ route }) => {
     <View style={styles.container}>
       <CustomHeader title={title || 'Product Detail'} showBack />
       <ScrollView contentContainerStyle={styles.scrollContent}>
-        <Image source={{ uri: thumbnail }} style={styles.image} resizeMode="contain" />
+        <AppImage source={{ uri: thumbnail }} style={styles.image} resizeMode="contain" />
         <Text style={styles.text}>{title}</Text>
         <Text style={styles.brand}>{brand}</Text>
         <Text style={styles.description}>{description}</Text>
