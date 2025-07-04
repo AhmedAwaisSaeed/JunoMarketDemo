@@ -8,7 +8,16 @@ export const IS_IOS: boolean = Platform.OS === 'ios';
 export const IS_ANDROID: boolean = Platform.OS === 'android';
 
 // Platform version numbers
-export const OS_VERSION: string = Platform.Version.toString();
+let version: string;
+if (typeof Platform.Version === 'string') {
+  version = Platform.Version;
+} else if (typeof Platform.Version === 'number') {
+  version = Platform.Version.toString();
+} else {
+  // fallback for test environments
+  version = '0';
+}
+export const OS_VERSION: string = version;
 export const OS_MAJOR_VERSION: number = parseInt(OS_VERSION, 10);
 
 // Platform specific features

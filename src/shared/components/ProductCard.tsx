@@ -1,7 +1,8 @@
 import React from 'react';
-import { View, Text, Image, StyleSheet, TouchableOpacity, Platform } from 'react-native';
+import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
 import { colors } from '../styles/common';
 import { IS_IOS } from '../constants/platform';
+import { AppImage } from '../components';
 
 interface ProductCardProps {
   image: string;
@@ -15,7 +16,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ image, title, description, pr
   <View style={[styles.card, { overflow: IS_IOS ? 'visible' : 'hidden' }] }>
     <TouchableOpacity onPress={onPress} activeOpacity={0.8} style={{ flex: 1 }}>
       <View style={styles.innerContent}>
-        <Image source={{ uri: image }} resizeMode="contain" style={styles.image} />
+        <AppImage source={{ uri: image }} resizeMode="contain" style={styles.image} />
         <View style={styles.cardContent}>
           <Text style={styles.title}>{title}</Text>
           <Text style={styles.price}>${price}</Text>

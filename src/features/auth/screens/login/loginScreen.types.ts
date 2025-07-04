@@ -1,3 +1,3 @@
-import { AuthStackScreenProps } from '../../../navigation/AppNavigator';
+import { AuthStackScreenProps } from '../../../../navigation/AuthStackNavigator';
 
 export type LoginScreenProps = AuthStackScreenProps<'Login'>; 

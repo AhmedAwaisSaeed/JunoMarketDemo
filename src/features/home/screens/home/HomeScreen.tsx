@@ -1,7 +1,7 @@
 import React, { useCallback } from 'react';
 import { View, FlatList, Text } from 'react-native';
 import { styles } from './homeScreen.styles';
-import { HomeScreenProps } from './homeScreen.types';
+import { HomeStackScreenProps } from '../../../../navigation/HomeStackNavigator';
 import ProductCard from '../../../../shared/components/ProductCard';
 import CustomHeader from '../../../../shared/components/CustomHeader';
 import Spinner from '../../../../shared/components/Spinner';
@@ -17,8 +17,8 @@ interface Product {
   price: number;
 }
 
-const HomeScreen: React.FC<HomeScreenProps> = () => {
-  const navigation = useNavigation();
+const HomeScreen: React.FC<HomeStackScreenProps<'Home'>> = () => {
+  const navigation = useNavigation<HomeStackScreenProps<'Home'>['navigation']>();
   const {
     products,
     loading,
