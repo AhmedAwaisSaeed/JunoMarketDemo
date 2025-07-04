@@ -97,6 +97,50 @@ To learn more about React Native, take a look at the following resources:
 - [`@facebook/react-native`](https://github.com/facebook/react-native) - the Open Source; GitHub **repository** for React Native.
 # JunoMarketDemo
 
+## Features Implemented (per requirements)
+
+- **Login Screen:**
+  - Simple login form. Navigates to Home screen after successful login.
+- **Home Screen:**
+  - Displays a list of products fetched from a public API.
+  - Shows basic details for each item (title, price, thumbnail, etc.).
+- **Detail Screen:**
+  - Navigates to a detail screen showing more information when an item is selected.
+- **State Management:**
+  - Uses Redux Toolkit for managing application state (products, auth, product details).
+- **Network Requests:**
+  - Uses Axios for all API requests.
+- **Navigation:**
+  - Implements stack navigation using React Navigation v6.
+- **Testing:**
+  - Unit tests for components using Jest and React Native Testing Library (see `src/shared/components/__tests__`).
+- **Codebase Structure:**
+  - Modular, maintainable folder structure with clear separation of features, shared components, and core logic.
+- **Comments:**
+  - Key files and logic are commented for clarity.
+- **Git:**
+  - Project uses Git for version control with a clear, descriptive commit history.
+
+## Additional Features (beyond requirements)
+
+- **Pagination:**
+  - Home screen supports infinite scroll/pagination for product list.
+- **Image Caching:**
+  - All images use `react-native-fast-image` for aggressive caching and smooth performance.
+  - A common `AppImage` component wraps FastImage for consistent usage.
+- **StatusBar Styling:**
+  - Custom header ensures status bar matches header color and style on both iOS and Android.
+- **TypeScript:**
+  - Full type safety across the codebase for components, navigation, and Redux state.
+- **Reusable Components:**
+  - Shared UI components (Button, Spinner, CustomHeader, ProductCard, etc.) for consistency and maintainability.
+- **Error Handling:**
+  - User-friendly error messages for network/API errors.
+- **Loading States:**
+  - Spinners and loading indicators for all async actions (initial load, pull-to-refresh, pagination, detail fetch).
+- **Platform Awareness:**
+  - Platform-specific constants and UI tweaks for iOS/Android.
+
 ## Project Structure (Current)
 
 ```
@@ -104,19 +148,25 @@ src/
   features/
     auth/
       components/    # Reusable components specific to auth feature
-      screens/       # Screens related to authentication (e.g., LoginScreen.tsx)
-      styles/        # Style files for auth screens (e.g., loginScreen.styles.ts)
-      types/         # TypeScript types/interfaces for auth (e.g., auth.types.ts)
+      screens/
+        login/
+          LoginScreen.tsx
+          loginScreen.styles.ts
+          loginScreen.types.ts
     home/
       components/    # Reusable components specific to home feature
-      screens/       # Screens related to home feature
-      styles/        # Style files for home screens
-      types/         # TypeScript types/interfaces for home
+      screens/
+        home/
+          HomeScreen.tsx
+          homeScreen.styles.ts
+          homeScreen.types.ts
     detail/
       components/    # Reusable components specific to detail feature
-      screens/       # Screens related to detail feature
-      styles/        # Style files for detail screens
-      types/         # TypeScript types/interfaces for detail
+      screens/
+        detail/
+          DetailScreen.tsx
+          detailScreen.styles.ts
+          detailScreen.types.ts
   shared/
     components/     # Reusable UI components (Button, Spinner, CustomHeader, etc.)
     constants/      # Shared constants (layout, platform, etc.)
@@ -126,13 +176,22 @@ src/
   core/
     api/            # API logic (Axios/fetch)
     config/         # App configuration
-    store/          # Redux store and slices
+    store/
+      slices/       # Redux Toolkit slices (e.g., authSlice)
+      hooks.ts      # Typed Redux hooks
+      store.ts      # Redux store setup
     types/          # Global TypeScript types
   navigation/       # App navigation setup (e.g., AppNavigator.tsx)
-App.tsx             # Entry point (can be moved here)
+App.tsx             # Entry point
 ```
 
-- Each feature (auth, home, detail) is self-contained with its own components, screens, styles, and types.
+- Each screen (e.g., Login, Home, Detail) is in its own folder inside the relevant feature's screens directory, with colocated styles and types files.
+- Each feature can have its own components folder for feature-specific reusable components.
 - Shared logic and reusable components are organized under `shared/`.
 - App-wide logic (api, config, store, types) is under `core/`.
 - Navigation setup is in `navigation/`.
+
+## Demo Credentials
+
+- **Username:** junomarket
+- **Password:** 12345678

@@ -1,28 +1,55 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
- * @format
- */
+import React, { useEffect, useState } from 'react';
+import AppNavigator from './src/navigation/AppNavigator';
+import { Provider } from 'react-redux';
+import { store } from './src/core/store/store';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import { useAppDispatch, useAppSelector } from './src/core/store/hooks';
+import { setIsLoggedIn } from './src/core/store/slices/authSlice';
+import { ActivityIndicator, View } from 'react-native';
+import { commonStyles } from './src/shared/styles/common';
 
-import { NewAppScreen } from '@react-native/new-app-screen';
-import { StatusBar, StyleSheet, useColorScheme, View } from 'react-native';
+function AppWithPersistence() {
+  const dispatch = useAppDispatch();
+  const isLoggedIn = useAppSelector(state => state.auth.isLoggedIn);
+  const [loading, setLoading] = useState(true);
 
-function App() {
-  const isDarkMode = useColorScheme() === 'dark';
+  useEffect(() => {
+    // Hydrate auth state on mount
+    const hydrateAuth = async () => {
+      try {
+        const value = await AsyncStorage.getItem('isLoggedIn');
+        if (value !== null) {
+          dispatch(setIsLoggedIn(value === 'true'));
+        }
+      } catch (e) {
+        // handle error
+      } finally {
+        setLoading(false);
+      }
+    };
+    hydrateAuth();
+  }, [dispatch]);
 
-  return (
-    <View style={styles.container}>
-      <StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} />
-      <NewAppScreen templateFileName="App.tsx" />
-    </View>
-  );
+  useEffect(() => {
+    // Persist auth state on change
+    AsyncStorage.setItem('isLoggedIn', isLoggedIn ? 'true' : 'false');
+  }, [isLoggedIn]);
+
+  if (loading) {
+    return (
+      <View style={commonStyles.centered}>
+        <ActivityIndicator size="large" />
+      </View>
+    );
+  }
+
+  return <AppNavigator />;
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-  },
-});
-
-export default App;
+export default function App() {
+  return (
+    <Provider store={store}>
+      <AppWithPersistence />
+    </Provider>
+  );
+}

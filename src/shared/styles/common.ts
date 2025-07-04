@@ -71,4 +71,12 @@ export const commonStyles = StyleSheet.create({
     marginHorizontal: spacing.md,
     marginVertical: spacing.sm,
   },
+  screenHorizontalPadding: {
+    paddingHorizontal: 20,
+  },
+  centered: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
 });

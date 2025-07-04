@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, StyleSheet, Platform, TouchableOpacity } from 'react-native';
+import { View, Text, StyleSheet, Platform, TouchableOpacity, StatusBar } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { useNavigation } from '@react-navigation/native';
 import { colors, typography } from '../styles/common';
@@ -24,25 +24,34 @@ const CustomHeader = ({ title, showBack }: CustomHeaderProps) => {
   });
 
   return (
-    <View style={[styles.container, getHeaderStyle()]}>
-      <View style={styles.content}>
-        {showBack && (
-          <TouchableOpacity
-            onPress={handleBack}
-            style={styles.backButton}
-            hitSlop={{ top: 10, bottom: 10, left: 10, right: 10 }}
-          >
-            {IS_IOS ? (
-              <Text style={styles.backText}>Back</Text>
-            ) : (
+    <>
+      <StatusBar
+        backgroundColor={colors.primary}
+        barStyle="light-content"
+        translucent={false}
+      />
+      <View style={[styles.container, getHeaderStyle()]}>
+        <View style={styles.content}>
+          {showBack && (
+            <TouchableOpacity
+              onPress={handleBack}
+              style={styles.backButton}
+              hitSlop={{ top: 10, bottom: 10, left: 10, right: 10 }}
+            >
               <Text style={styles.backIcon}>‹</Text>
-            )}
-          </TouchableOpacity>
-        )}
-        <Text style={[styles.title, showBack && styles.titleWithBack]}>{title}</Text>
-        {showBack && <View style={styles.backButtonPlaceholder} />}
+            </TouchableOpacity>
+          )}
+          <Text
+            style={[styles.title, showBack && styles.titleWithBack]}
+            numberOfLines={1}
+            ellipsizeMode="tail"
+          >
+            {title}
+          </Text>
+          {showBack && <View style={styles.backButtonPlaceholder} />}
+        </View>
       </View>
-    </View>
+    </>
   );
 };
 
